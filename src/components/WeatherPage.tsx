@@ -37,9 +37,8 @@ const WeatherPage: React.FC = () => {
     if (savedCity) {
       const city = JSON.parse(savedCity) as City;
       setSelectedCity(city);
-      fetchWeatherData(city);
     }
-  }, [fetchWeatherData]);
+  }, []);
 
 
   useEffect(() => {
@@ -47,7 +46,7 @@ const WeatherPage: React.FC = () => {
       fetchWeatherData(selectedCity);
       localStorage.setItem('selectedCity', JSON.stringify(selectedCity));
     }
-  }, [selectedCity, fetchWeatherData]);
+  }, [selectedCity]);
 
   
   useEffect(() => {
@@ -55,10 +54,10 @@ const WeatherPage: React.FC = () => {
       if (selectedCity) {
         fetchWeatherData(selectedCity);
       }
-    }, 600000); 
+    }, 1000); 
 
     return () => clearInterval(interval); 
-  }, [selectedCity, fetchWeatherData]);
+  }, [selectedCity]);
 
   return (
     <Container maxWidth="sm" style={{ marginTop: '20px' }}>

@@ -8,7 +8,7 @@ interface WeatherDisplayProps {
   weatherData: WeatherData | null;
 }
 
-const WeatherDisplay: React.FC<WeatherDisplayProps> = ({ weatherData }) => {
+const WeatherDisplay = ({ weatherData }:WeatherDisplayProps) => {
   const averageTemp = useMemo(() => {
     if (weatherData) {
       return (weatherData.minTemp + weatherData.maxTemp) / 2;
